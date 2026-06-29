@@ -23,10 +23,11 @@ app = Flask(__name__)
 
 # MySQL Connection
 conn = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Password",
-    database="ai_mock_interview"
+    host=os.getenv("MYSQLHOST"),
+    user=os.getenv("MYSQLUSER"),
+    password=os.getenv("MYSQLPASSWORD"),
+    database=os.getenv("MYSQLDATABASE"),
+    port=int(os.getenv("MYSQLPORT"))
 )
 
 cursor = conn.cursor()
