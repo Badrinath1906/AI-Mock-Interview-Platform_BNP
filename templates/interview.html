@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>{{ role }} Mock Interview</h1>
+
+        <p class="subtitle">
+            Company: {{ company }}
+        </p>
+
+        <div class="question-box">
+
+            <h2>Interview Question</h2>
+
+            <form action="/next_question" method="POST">
+
+                <!-- Hidden Data -->
+                <input type="hidden" name="role" value="{{ role }}">
+                <input type="hidden" name="company" value="{{ company }}">
+
+                <!-- Question -->
+                <h3 class="question">
+                    {{ question }}
+                </h3>
+
+                <!-- Answer Section -->
+                <label class="answer-label">
+                    Your Answer
+                </label>
+
+                <textarea
+                    name="answer"
+                    class="answer-box"
+                    placeholder="Type your answer here..."
+                    
+                ></textarea>
+
+                <br><br>
+
+                <!-- Buttons -->
+                <div class="button-group">
+
+                    <button
+                        type="submit"
+                        name="action"
+                        value="save"
+                        class="btn"
+                    >
+                        Save & Next
+                    </button>
+
+                    <button
+                        type="submit"
+                        name="action"
+                        value="skip"
+                        class="btn"
+                    >
+                        Skip Question
+                    </button>
+
+                    <button
+                        type="submit"
+                        name="action"
+                        value="sample"
+                        class="btn"
+                    >
+                        Show Sample Answer
+                    </button>
+
+                </div>
+
+            </form>
+
+            <!-- Sample Answer -->
+            {% if sample_answer %}
+
+            <div class="sample-answer">
+
+                <h3>🤖 Gemini Suggested Answer</h3>
+
+                <pre>{{ sample_answer }}</pre>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>

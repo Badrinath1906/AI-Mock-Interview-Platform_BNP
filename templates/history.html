@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview History</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#4b0082,#d63384);
+            margin:0;
+            padding:40px;
+            color:white;
+        }
+
+        h1{
+            text-align:center;
+            font-size:40px;
+            margin-bottom:30px;
+        }
+
+        .container{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:20px;
+        }
+
+        .card{
+            
+            width:350px;
+            padding:25px;
+            background:rgba(255,255,255,0.15);
+            backdrop-filter:blur(10px);
+            border-radius:15px;
+            padding:20px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.3);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-5px);
+        }
+
+        .company{
+            font-size:22px;
+            font-weight:bold;
+            margin-bottom:10px;
+        }
+
+        .role{
+            font-size:18px;
+            margin-bottom:10px;
+        }
+
+        .score{
+            font-size:24px;
+            color:#ffd700;
+            font-weight:bold;
+        }
+
+        .id{
+            margin-top:10px;
+            color:#ddd;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>📜 Interview History</h1>
+
+    <div class="container">
+
+        {% for interview in interviews %}
+
+        <div class="card">
+
+            <div class="company">
+                🏢 {{ interview[1] }}
+            </div>
+
+            <div class="role">
+                💼 {{ interview[2] }}
+            </div>
+
+            <div class="score">
+                ⭐ {{ interview[3] }}
+            </div>
+
+            <div class="id">
+                Interview ID: {{ interview[0] }}
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

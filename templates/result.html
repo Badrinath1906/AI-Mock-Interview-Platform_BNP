@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview Completed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎉 Interview Completed</h1>
+
+    <h2>Total Questions: {{ total }}</h2>
+
+    <h2>Answered: {{ answered }}</h2>
+
+    <h2>Skipped: {{ skipped }}</h2>
+    <hr>
+
+<h2>Your Interview Report</h2>
+<form action="/evaluate" method="POST">
+
+    <button type="submit" class="btn">
+        📊 Evaluate My Interview
+    </button>
+
+</form>
+
+{% for i in range(total) %}
+
+<div class="report-box">
+
+    <h3>{{ questions[i] }}</h3>
+
+    <p>
+        <strong>Your Answer:</strong>
+        {{ answers[i] }}
+    </p>
+
+</div>
+
+<br>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>

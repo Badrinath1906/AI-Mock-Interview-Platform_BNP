@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Interview Evaluation</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+    background:#0f172a;
+    color:white;
+    padding:40px;
+
+}
+
+.container{
+
+    max-width:1250px;
+    margin:auto;
+
+}
+
+.header{
+
+    text-align:center;
+    margin-bottom:35px;
+
+}
+
+.header h1{
+
+    font-size:42px;
+    color:#ffffff;
+
+}
+
+.header p{
+
+    margin-top:12px;
+    color:#cbd5e1;
+    font-size:18px;
+
+}
+
+.score-card{
+
+    background:linear-gradient(135deg,#7c3aed,#9333ea);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+
+}
+
+.score-card h2{
+
+    font-size:30px;
+
+}
+
+.score{
+
+    font-size:65px;
+
+    margin-top:15px;
+
+    font-weight:bold;
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    margin-top:18px;
+
+    background:white;
+
+    color:#7c3aed;
+
+    padding:10px 25px;
+
+    border-radius:40px;
+
+    font-weight:bold;
+
+}
+
+.skills{
+
+    margin-top:35px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+.skill-card{
+
+    background:#1e293b;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.3);
+
+}
+
+.skill-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:12px;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+}
+
+.progress{
+
+    width:100%;
+
+    height:18px;
+
+    background:#334155;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    border-radius:30px;
+
+    background:linear-gradient(90deg,#22c55e,#16a34a);
+
+    animation:grow 1.2s ease;
+
+}
+
+@keyframes grow{
+
+from{
+
+width:0;
+
+}
+
+to{
+
+width:100%;
+
+}
+
+}
+
+.report{
+
+    margin-top:40px;
+
+    background:#1e293b;
+
+    border-radius:18px;
+
+    padding:30px;
+
+}
+
+.report h2{
+
+    margin-bottom:20px;
+
+    color:#ffffff;
+
+}
+
+.report pre{
+
+    white-space:pre-wrap;
+
+    line-height:1.9;
+
+    font-size:17px;
+
+    background:#111827;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    color:#f8fafc;
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h1>🤖 AI Interview Evaluation</h1>
+
+<p>Your interview has been evaluated successfully.</p>
+
+</div>
+
+<div class="score-card">
+
+<h2>🏆 Overall Score</h2>
+
+<div class="score">
+
+{{ score }}
+
+</div>
+
+{% if technical >= 8 %}
+
+<div class="badge">
+
+🌟 Excellent Performance
+
+</div>
+
+{% elif technical >= 5 %}
+
+<div class="badge">
+
+👍 Good Performance
+
+</div>
+
+{% else %}
+
+<div class="badge">
+
+📚 Needs Improvement
+
+</div>
+
+{% endif %}
+
+</div>
+
+<div class="skills">
+
+<div class="skill-card">
+
+<div class="skill-title">
+
+<span>Technical Knowledge</span>
+
+<span>{{ technical }}/10</span>
+
+</div>
+
+<div class="progress">
+
+<div class="progress-fill"
+
+style="width:{{ technical*10 }}%;">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="skill-card">
+
+<div class="skill-title">
+
+<span>Communication</span>
+
+<span>{{ communication }}/10</span>
+
+</div>
+
+<div class="progress">
+
+<div class="progress-fill"
+
+style="width:{{ communication*10 }}%;">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="skill-card">
+
+<div class="skill-title">
+
+<span>Problem Solving</span>
+
+<span>{{ problem_solving }}/10</span>
+
+</div>
+
+<div class="progress">
+
+<div class="progress-fill"
+
+style="width:{{ problem_solving*10 }}%;">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="report">
+
+<h2>🤖 AI Evaluation Report</h2>
+
+<pre>{{ evaluation }}</pre>
+
+</div>
+<div class="actions">
+
+<h2>🚀 Quick Actions</h2>
+
+<div class="button-container">
+
+<a href="/download_pdf">
+
+<button class="btn">
+
+📄 Download PDF Report
+
+</button>
+
+</a>
+
+<a href="/dashboard">
+
+<button class="btn">
+
+🏠 Dashboard
+
+</button>
+
+</a>
+
+<a href="/start-interview">
+
+<button class="btn">
+
+🔄 Start New Interview
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<style>
+
+/* ============================= */
+/* Quick Action Buttons */
+/* ============================= */
+
+.actions{
+
+    margin-top:35px;
+
+    text-align:center;
+
+}
+
+.actions h2{
+
+    margin-bottom:25px;
+
+    font-size:28px;
+
+}
+
+.button-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.btn{
+
+    min-width:230px;
+
+    padding:16px 28px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:linear-gradient(135deg,#7c3aed,#9333ea);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:0 8px 20px rgba(124,58,237,.35);
+
+}
+
+.btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(124,58,237,.6);
+
+}
+
+/* ============================= */
+/* Mobile Responsive */
+/* ============================= */
+
+@media(max-width:1000px){
+
+.skills{
+
+grid-template-columns:1fr;
+
+}
+
+.score{
+
+font-size:52px;
+
+}
+
+.header h1{
+
+font-size:34px;
+
+}
+
+}
+
+@media(max-width:700px){
+
+body{
+
+padding:18px;
+
+}
+
+.score-card{
+
+padding:25px;
+
+}
+
+.report{
+
+padding:20px;
+
+}
+
+.report pre{
+
+font-size:15px;
+
+padding:18px;
+
+}
+
+.btn{
+
+width:100%;
+
+}
+
+.button-container{
+
+gap:15px;
+
+}
+
+}
+
+</style>
+
+</body>
+
+</html>

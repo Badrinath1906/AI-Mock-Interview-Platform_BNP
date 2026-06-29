@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Mock Interview</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>🤖 AI Mock Interview Platform</h1>
+
+        <p class="subtitle">
+            Practice technical interviews with AI-powered feedback and scoring.
+        </p>
+
+        <form action="/interview" method="POST">
+
+            <h2>Choose Company</h2>
+
+            <input
+                type="text"
+                name="company"
+                placeholder="e.g. TCS, Infosys, Accenture, Wipro, Capgemini,Cognizant, HCLTech.."
+                required
+            >
+
+            <br><br>
+
+            <h2>Choose Your Interview Role</h2>
+
+            <input
+                type="text"
+                name="role"
+                placeholder="e.g. Software Engineer, Java Developer, Data Analyst, ML Engineer..."
+                required
+            >
+
+            <br><br>
+
+            <button type="submit">
+                Start Interview
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
